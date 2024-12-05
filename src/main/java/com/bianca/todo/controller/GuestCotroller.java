@@ -14,13 +14,13 @@ public class GuestCotroller {
     @Autowired
     private GuestService guestService;
 
-    // Get all guests
+
     @GetMapping
     public List<Guest> findAllGuests() {
         return guestService.findAll();
     }
 
-    // Get a guest by ID
+
     @GetMapping("/{id}")
     public Guest findGuestById(@PathVariable int id) {
         return guestService.findById(id);
@@ -32,19 +32,19 @@ public class GuestCotroller {
 //        return guestService.findTasksByGuestId(id);
 //    }
 
-    // Create a new guest
+
     @PostMapping
     public Guest createGuest(@RequestBody Guest guest) {
         return guestService.save(guest);
     }
 
-    // Update an existing guest
+
     @PutMapping("/{id}")
     public Guest updateGuest(@PathVariable int id, @RequestBody Guest updatedGuest) {
         return guestService.update(id, updatedGuest);
     }
 
-    // Delete a guest
+
     @DeleteMapping("/{id}")
     public void deleteGuest(@PathVariable int id) {
         guestService.delete(id);

@@ -14,8 +14,8 @@ public class TaskController {
     @Autowired
     TaskService taskService;
 
-    @GetMapping("/task")
-    public Task getById(@RequestParam Integer id) {
+    @GetMapping("/task/{id}")
+    public Task getById(@PathVariable Integer id) {
         return taskService.getById(id);
     }
 
@@ -24,18 +24,18 @@ public class TaskController {
         return taskService.findAll();
     }
 
-    @PostMapping("/tasks")
+    @PostMapping("/task")
     public Task createTask(@RequestBody Task task) {
         return taskService.save(task);
     }
 
-    @PutMapping("/task")
-    public Task updateTask(@RequestParam Integer id, @RequestBody Task task) {
+    @PutMapping("/task/{id}")
+    public Task updateTask(@PathVariable Integer id, @RequestBody Task task) {
         return taskService.update(id, task);
     }
 
-    @DeleteMapping("/task")
-    public void deleteById(@RequestParam Integer id) {
+    @DeleteMapping("/task/{id}")
+    public void deleteById(@PathVariable Integer id) {
         taskService.delete(id);
     }
 }

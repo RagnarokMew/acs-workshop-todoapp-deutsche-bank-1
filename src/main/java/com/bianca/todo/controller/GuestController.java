@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/guest")
-public class GuestCotroller {
+@RequestMapping("/api/guest")
+public class GuestController {
     @Autowired
     private GuestService guestService;
 
@@ -25,12 +25,14 @@ public class GuestCotroller {
     public Guest findGuestById(@PathVariable int id) {
         return guestService.findById(id);
     }
+/*
+    // Get all tasks for a specific guest
+    @GetMapping("/{id}/tasks")
+    public List<Task> findTasksForGuest(@PathVariable int id) {
+        return guestService.findTasksByGuestId(id);
+    }
 
-//    // Get all tasks for a specific guest
-//    @GetMapping("/{id}/tasks")
-//    public List<Task> findTasksForGuest(@PathVariable int id) {
-//        return guestService.findTasksByGuestId(id);
-//    }
+ */
 
 
     @PostMapping

@@ -1,6 +1,8 @@
 package com.bianca.todo.service.impl;
 
+import com.bianca.todo.model.Guest;
 import com.bianca.todo.model.Task;
+import com.bianca.todo.repository.GuestRepository;
 import com.bianca.todo.repository.TaskRepository;
 import com.bianca.todo.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ public class TaskServiceImpl implements TaskService {
     @Autowired
     TaskRepository taskRepository;
 
+    @Autowired
+    GuestRepository guestRepository;
+
     @Override
     public List<Task> findAll() {
         return taskRepository.findAll();
@@ -24,12 +29,12 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Task not found with ID: " + id));
     }
-
+/*
     @Override
     public Task save(Task task) {
         return taskRepository.save(task);
     }
-
+*/
     @Override
     public void delete(Integer id) {
         if (!taskRepository.existsById(id)) {
@@ -50,4 +55,23 @@ public class TaskServiceImpl implements TaskService {
 
         return taskRepository.save(existingTask);
     }
+
+    ////////////////
+    @Override
+    public Task save(Task task) {
+        if (task.getGuest() == null || task.getGuest().getId() == 0) {
+            throw new RuntimeException("Guest ID is required.");
+        }
+
+        // Caută Guest-ul în baza de date
+        Guest guest = guestRepository.findById(task.getGuest().getId())
+                .orElseThrow(() -> new RuntimeException("Guest not found with ID: " + task.getGuest().getId()));
+
+        // Asociază guest-ul cu task-ul
+        task.setGuest(guest);
+
+        // Salvează task-ul
+        return taskRepository.save(task);
+    }
+
 }

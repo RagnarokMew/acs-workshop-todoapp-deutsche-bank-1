@@ -63,11 +63,11 @@ public class TaskServiceImpl implements TaskService {
             throw new RuntimeException("Guest ID is required.");
         }
 
-        // Caută Guest-ul în baza de date
+        // Cauta Guest-ul în baza de date
         Guest guest = guestRepository.findById(task.getGuest().getId())
                 .orElseThrow(() -> new RuntimeException("Guest not found with ID: " + task.getGuest().getId()));
 
-        // Asociază guest-ul cu task-ul
+        // Asociaza guest-ul cu task-ul
         task.setGuest(guest);
 
         // Salvează task-ul

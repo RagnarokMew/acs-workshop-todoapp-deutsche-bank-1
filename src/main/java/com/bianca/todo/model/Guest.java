@@ -15,7 +15,6 @@ import java.util.List;
 public class Guest {
 
 
-
     @Id
     @GenericGenerator(name = "id", strategy = "increment")
     @GeneratedValue(generator = "id")
@@ -33,12 +32,7 @@ public class Guest {
     @OneToMany(mappedBy = "guest")
     @JsonManagedReference
     private List<Task> tasks;
-
-
-
 }
 
-//    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Task> tasks;
 
 

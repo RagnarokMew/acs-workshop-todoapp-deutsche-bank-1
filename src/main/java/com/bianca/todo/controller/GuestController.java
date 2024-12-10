@@ -23,7 +23,7 @@ public class GuestController {
 
     @GetMapping("/{id}")
     public Guest findGuestById(@PathVariable int id) {
-        return guestService.findById(id);
+        return guestService.getById(id);
     }
 /*
     // Get all tasks for a specific guest

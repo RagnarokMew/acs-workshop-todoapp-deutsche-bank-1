@@ -1,6 +1,7 @@
 package com.bianca.todo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +34,7 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "guest_id")
-    @JsonBackReference
+    @JsonIgnoreProperties("tasks")
     private Guest guest;
 
 }

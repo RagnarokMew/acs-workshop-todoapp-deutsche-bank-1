@@ -1,4 +1,5 @@
 package com.bianca.todo.model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,7 @@ public class Guest {
 
 
     @Id
-    @GenericGenerator(name = "id", strategy = "increment")
+    @GenericGenerator(name = "id")
     @GeneratedValue(generator = "id")
     public int id;
 
@@ -30,9 +31,8 @@ public class Guest {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "guest")
-    @JsonManagedReference
+    @JsonIgnoreProperties("guest")
     private List<Task> tasks;
 }
-
 
 

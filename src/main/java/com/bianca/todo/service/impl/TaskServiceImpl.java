@@ -29,12 +29,7 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Task not found with ID: " + id));
     }
-/*
-    @Override
-    public Task save(Task task) {
-        return taskRepository.save(task);
-    }
-*/
+
     @Override
     public void delete(Integer id) {
         if (!taskRepository.existsById(id)) {
@@ -56,7 +51,6 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.save(existingTask);
     }
 
-    ////////////////
     @Override
     public Task save(Task task) {
         if (task.getGuest() == null || task.getGuest().getId() == 0) {

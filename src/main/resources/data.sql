@@ -26,5 +26,5 @@ CREATE TABLE tasks (
 
 INSERT INTO tasks (title, description, status, due_date, guest_id) VALUES ('Buy Alcohol', 'Buy wine and vodka for the party.', 'Pending', '2024-12-27', 1);
 INSERT INTO tasks (title, description, status, due_date, guest_id) VALUES ('Buy Grapes', 'Buy grapes to eat under the table during the party.', 'Pending', '2024-12-31', 2);
-INSERT INTO tasks (title, description, status, due_date, guest_id) VALUES ('Decorate House', 'Decorate the house with Christmas lights and ornaments.', 'In Progress', '2024-12-30', 3);
+INSERT INTO tasks (title, description, status, due_date, guest_id) VALUES ('Decorate House', 'Decorate the house with Christmas lights and ornaments.', 'Pending', '2024-12-30', 3);
 INSERT INTO tasks (title, description, status, due_date, guest_id) VALUES ('Prepare Music Playlist', 'Create a fun music playlist for New Years Eve.', 'Completed', '2024-12-31', 1);

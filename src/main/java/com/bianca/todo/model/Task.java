@@ -15,7 +15,7 @@ import java.util.Date;
 public class Task {
 
     @Id
-    @GenericGenerator(name = "id", strategy = "increment")
+    @GenericGenerator(name = "id")
     @GeneratedValue(generator = "id")
     public int id;
 
